@@ -17,7 +17,7 @@ app.use(express.static('css'));
 app.get('/', function(req,res){
     console.log('Hello from app.get');
     //res.send("Thanks for response");
-    res.sendFile(__dirname+"/views/" + 'index.html');
+    res.sendFile(__dirname+"/views/" + 'homepage.html');
 });
 
 app.get('/newtask', function(req,res){
@@ -27,7 +27,7 @@ app.get('/newtask', function(req,res){
 })
 
 app.post('/newtask', function(req,res){   
-    res.sendFile(__dirname+"/views/" + 'index.html');
+    res.sendFile(__dirname+"/views/" + 'homepage.html');
     db.push(req.body);
     
 });
