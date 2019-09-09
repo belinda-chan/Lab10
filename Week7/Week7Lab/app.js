@@ -14,7 +14,7 @@ let Task = require('./models/task');
 app.use(express.static(__dirname+"/views"));
 app.use(express.static(__dirname+"/img"));
 
-let url = "mongodb://localhost:27017/week6lab";
+let url = "mongodb://localhost:27017/week7lab";
 
 
 mongoose.connect(url, function(err){
