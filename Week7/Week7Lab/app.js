@@ -2,6 +2,9 @@ let mongoose = require('mongoose');
 let express = require('express');
 let app = express();
 let mongodb = require ('mongodb');
+//
+// const MongoClient = mongodb.MongoClient;
+// const url = "mongodb://" + process.argv[2] + ":27017/";
 
 let bodyParser=require('body-parser'); //needed as the middleware for the post request
 app.use(bodyParser.urlencoded({extended:false}));
@@ -77,6 +80,7 @@ app.post('/addnewtask', function(req,res){
     let task = new Task({
             name: taskDetails.tname,
             assign: taskDetails.tdevid,
+            assignfname: taskDetails.tdevname,
             due: taskDetails.tdate,
             status: taskDetails.tstatus,
             desc: taskDetails.tdesc
@@ -133,7 +137,12 @@ app.post('/deletecompletedata', function (req, res) {
 
 // GET UPDATE TASK
 app.get('/updatetask', function (req, res) {
-    res.sendFile(__dirname + '/views/updatetask.html');
+    Developer.find().exec(function(err,data){
+        res.render(__dirname + '/views/updatetask.html',{
+            devDb: data
+        });
+    })
+    
 });
 
 // POST UPDATE DATA
@@ -144,11 +153,25 @@ app.post('/updatetaskdata', function (req, res) {
     Task.findByIdAndUpdate(filter, theUpdate, function(err, result){
         if (err)
             console.log(err);
+            
     });
     res.redirect('/gettasks');// redirect the client to list users page
 });
 
+//Update tasks that are either assigned to 'Sam' or 'Lee'. Update assigned person to Anna and status to 'In Progress'.
+app.get('/updatetask/:name/:status', function(req,res){
+    // let taskDetails = req.body;
+    // let filter = taskDetails.tid;
+    let obj = {
+        name: req.params.name,
+        status: req.params.status
+    }
+    Task.updateMany({'task.fname':'Sam'}, {'task.fname':'Lee' },
+    { $set: { 'task.fname': 'Anna' } },{ $set: { 'task.tstatus': 'In Progress' } }, function(err,doc){
 
+        console.log(doc);
+    });
+    });
 
 
 app.engine('html', require('ejs').renderFile);

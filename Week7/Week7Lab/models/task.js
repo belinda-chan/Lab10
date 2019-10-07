@@ -8,6 +8,10 @@ let taskSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'developerCollection'
     },
+    fname:{
+        type: String,
+        ref:'developerCollection'
+    },
     due: Date,
     status:{
         type: String,

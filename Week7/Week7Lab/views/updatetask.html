@@ -18,6 +18,14 @@
     </h1>
     <form action="/updatetaskdata" method="POST">
         Task ID <input type="text" method="POST" name="tid" /> </br>
+        Developer Name 
+        <select method="POST" name="tdevname">
+                 <% for (let i=0;i<devDb.length;i++){ %>
+            <option value="<% =devDb[i]._id %>"><% = devDb[i].name.fname%></option>
+            <% } %> 
+        </select>
+        </br>
+
         Task Status 
         <select method="POST" name="tstatus">
             <option value="InProgress">InProgress</option>

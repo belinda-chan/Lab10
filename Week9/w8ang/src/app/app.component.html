@@ -1,0 +1,59 @@
+<div>
+    <h1>Welcome to {{title}}</h1>
+  </div>
+  <br>
+  <hr>
+    <div>
+      Book Title <input name="bookTitle" [(ngModel)]="bookTitle" type="text" class="form-control" />
+    </div>
+    <div>
+      Publication Date <input name="pubDate" [(ngModel)]="pubDate" type="date" class="form-control" />
+    </div>
+    <div>
+      Select Book Type 
+      <select id="bookType" [(ngModel)]="bookType" name="bookType" type="text" class="form-control">
+        <option value = "Hard Cover">Hard Cover</option>
+        <option value = "Paper Back">Paper Back</option>
+      </select>
+    </div>
+    <div>
+      Book Summary
+      <textarea id="textboxsummary" name="bookSummary" [(ngModel)]="bookSummary" type="text" class="form-control">
+      </textarea>
+    </div>
+  
+    <br>
+    <button (click)="saveBook()" class="btn btn-primary">Save Book {{getNo()}}</button>
+    <button (click)="deleteHardCover()" class="btn btn-primary disabled">Delete Hard Cover {{getHardCover()}}</button>
+    <hr>
+    <table class="table table-striped">
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Publication Date</th>
+        <th>Type</th>
+        <th>Summary</th>
+        <th>Delete ?</th>
+      </tr>
+      <ng-container *ngFor="let item of DB;let i=index">
+        <tr>
+        
+          <td>{{i + 1}}</td>
+          <td>{{item.bookTitle}}</td>
+          <td>{{item.pubDate}}</td>
+          <td>{{item.bookType}}</td>
+          <td>{{item.bookSummary}}</td>
+          <td>
+            <button (click)="deleteBook(item)" class = "btn btn-danger" >
+              Delete 
+            </button>
+
+            <button (click)="changeBook(item)" class = "btn btn-danger" >
+              Change
+
+            </button>  
+          </td>
+  
+        </tr>
+      </ng-container>
+    </table>

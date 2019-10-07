@@ -1,0 +1,27 @@
+Name <input type = "text" [(ngModel)]="name"/><br> 
+Quantity <input type = "number" [(ngModel)] = "quantity"/><br> 
+Price <input type = "number" [(ngModel)] = "price"/><br> 
+
+<button (click)="saveItem()">saveItem {{items.length}}</button>
+<button (click)="deleteCheap()">deleteCheap {{getCheapNumber()}}</button>
+
+
+
+<table>
+  <tr>
+    <th> # </th>
+    <th> Name </th>
+    <th> Quantity </th>
+    <th> Price ($)</th>
+    <th> Cost ($)</th>
+    <th> Delete ?</th>
+  </tr>
+  <tr *ngFor = "let item of items;let i=index">
+    <td>{{i+1}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.price*item.quantity}}</td>
+      <td><button (click)="deleteItem()">deleteItem</button></td>
+  </tr>
+</table>
