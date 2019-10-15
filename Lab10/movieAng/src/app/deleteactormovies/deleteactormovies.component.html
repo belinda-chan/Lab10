@@ -1,0 +1,34 @@
+<div class="section">
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Birth Year</th>
+      </tr>
+      <tr *ngFor="let item of actorsDB">
+        <td>{{item.name}}</td>
+        <td>{{item.bYear}}</td>
+      </tr>
+    </table>
+
+<button (click)="onDeleteAllActors()" class = "btn btn-danger" >
+  Delete All Actors
+</button>  
+  </div>
+
+  <div class="section">
+    <table class="table table-striped">
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+
+      </tr>
+      <tr *ngFor="let item of moviesDB">
+        <td>{{item.title}}</td>
+        <td>{{item.year}}</td>
+      </tr>
+    </table>
+
+<button (click)="onDeleteAllMovies()" class = "btn btn-danger" >
+    Delete All Movies
+  </button>  
+  </div>

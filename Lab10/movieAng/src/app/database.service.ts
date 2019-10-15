@@ -47,4 +47,16 @@ export class DatabaseService {
     return this.http.post('/movies/' + data.title, data, httpOptions)
     
   }
+
+  //extra task
+  deleteAllActors() {
+    let url = "/deleteAllActors";
+    return this.http.delete(url, httpOptions);
+
+  }
+
+  deleteAllMovies(){
+    let url = '/deleteAllMovies';
+    return this.http.delete(url, httpOptions);
+  }
 }

@@ -58,6 +58,19 @@ module.exports = {
             })
         });
     },
+    //delete all actors extra task
+    deleteAllActors: function(req,res){
+        Actor.deleteMany({}, function(err){
+            if(err) res.json(err)
+            else
+ 
+            res.json({"msg" : "Actors Deleted"})
+
+        })
+     
+    },
+
+
     // Q2 Delete Actor and All Their Movies
     deleteActMovies : function(req, res){
         // First find the Actor that user wants to delete
@@ -106,21 +119,5 @@ module.exports = {
             }
         });
     },
-    // EXTRA TASK
-    addAge4: function (req,res){
-        let date = parseInt(new Date().getFullYear());
-        let date50 = date -50;
-        
-        
-        Actor.updateMany({bYear:{$lte: date50 }}, { $inc: { bYear: -4 }}, {new: true }).exec(function(err, data){
-        
-            if (err)
-                res.json(err)
-            else
-                res.json(333333)
-            
-        })
 
-
-    }
 }

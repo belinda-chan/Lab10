@@ -32,13 +32,14 @@ app.get('/actors/:id', actors.getOne);
 app.put('/actors/:id', actors.updateOne);
 app.post('/actors/:actid/movies', actors.addMovie);
 app.delete('/actors/:id', actors.deleteOne);
-
+app.delete('/deleteallactors', actors.deleteAllActors); //DELETE ALL ACTORS ENDPOINT - extra points
 
 //Movie RESTFul  endpoints
 app.get('/movies', movies.getAll);
 app.post('/movies', movies.createOne);
 app.get('/movies/:id', movies.getOne);
 app.put('/movies/:id', movies.updateOne);
+app.delete('/deleteallmovies', movies.deleteAllMovies);//DELETE ALL MOVIES ENDPOINT - extra points
 
 // Q1 Delete Movie By ID
 app.delete('/movies/:id', movies.deleteOne);
@@ -65,8 +66,6 @@ app.get('/actorsnew', actors.getAllNew);
 //Q8 New Get All Movies Method
 app.get('/moviesnew', movies.getAllNew);
 
-// EXTRA TASK
-app.post('/add4age', actors.addAge4);
 
 // WEEK 9 LAB TASKS
 // Task 3: Delete Before a Year

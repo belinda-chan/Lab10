@@ -74,6 +74,23 @@ module.exports = {
             })
         });
     },
+
+    //delete all movies - extra task
+        deleteAllMovies: function(req,res){
+    
+                Movie.deleteMany({}, function(err){
+                    if(err) res.json(err)
+                    else
+         
+                    res.json({"msg" : "Movies Deleted"})
+        
+                })
+             
+            
+            },
+    
+
+
     // Q6 Retrieve (GET) all the movies produced between year1 and year2, where year1>year2.
     getBetween: function (req, res){
         let y2 = parseInt(req.params.y2);
